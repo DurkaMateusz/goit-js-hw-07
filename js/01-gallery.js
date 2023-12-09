@@ -19,6 +19,11 @@ galleryContainer.addEventListener("click", (event) => {
   if (event.target.classList.contains("gallery__image")) {
     const instance = basicLightbox.create(`<img src="${event.target.dataset.source}" alt="${event.target.alt}" />`);
     instance.show();
+    document.addEventListener("keydown", onEscape);
+      function onEscape(event) {
+        if (event.code !== "Escape") return;
+        instance.close();
+      document.removeEventListener("keydown", onEscape);
+    };
   }
 });
-
